@@ -24,7 +24,7 @@ Getting Started
 This repository is to make sure all figures and results are reproducible by anyone easily for this paper. Python 3.6 or
 above is required and reasonable computational resource is required.
 
-To get started, this paper uses `astroNN`_ developed by us and tested with **astroNN 1.0.0 (Not yet released)**.
+To get started, this paper uses `astroNN`_ developed by us and tested with **astroNN 1.1.0 (Not yet released)**.
 Extensive documentation at http://astroNN.readthedocs.io and quick start guide at
 http://astronn.readthedocs.io/en/latest/quick_start.html
 
@@ -39,7 +39,24 @@ http://astronn.readthedocs.io/en/latest/tools_apogee.html#pseudo-continuum-norma
 Jupyter Notebook
 ------------------
 
-To be added
+Incomplete list of notebook
+
+-   | `Datasets_Data_Reduction.ipynb`_
+    | You should check out this notebook first as it describes how to reproduce the **exactly** same datasets used in the paper
+-   | `Parallax_Offset_PolyModels.ipynb`_
+    | To show how does offset in parallax space (aka Gaia observations) affect a simple regress model
+-   | `Inference.ipynb`_
+    | It describes inference, NN performance and NN uncertainty
+-   | `Jacobian.ipynb`_
+    | It describes jacobian analysis.
+-   | `APOGEE_RC_N_Distance.ipynb`_
+    | It describes the evaluation of NNs on APOGEE DR14 Red Clumps catalog and BPG distances
+
+.. _Datasets_Data_Reduction.ipynb: Datasets_Data_Reduction.ipynb
+.. _Parallax_Offset_PolyModels.ipynb: Parallax_Offset_PolyModels.ipynb
+.. _Inference.ipynb: Inference.ipynb
+.. _Jacobian.ipynb: Jacobian.ipynb
+.. _APOGEE_RC_N_Distance.ipynb: APOGEE_RC_N_Distance.ipynb
 
 Authors
 =========
