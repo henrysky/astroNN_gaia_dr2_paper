@@ -22,7 +22,10 @@ Getting Started
 =================
 
 This repository is to make sure all figures and results are reproducible by anyone easily for this paper. Python 3.6 or
-above is required and reasonable computational resource is required.
+above and reasonable computational resource is required.
+
+If Github has issue (or too slow) to load the Jupyter Notebooks, you can go
+http://nbviewer.jupyter.org/github/henrysky/astroNN_gaia_dr2_paper/tree/master/
 
 To get started, this paper uses `astroNN`_ developed by us and tested with **astroNN 1.1.0 (Not yet released)**.
 Extensive documentation at http://astroNN.readthedocs.io and quick start guide at
