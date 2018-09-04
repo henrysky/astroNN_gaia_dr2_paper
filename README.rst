@@ -48,6 +48,8 @@ Incomplete list of notebook
     | You should check out this notebook first as it describes how to reproduce the **exactly** same datasets used in the paper
 -   | `Parallax_Offset_PolyModels.ipynb`_
     | To show how does offset in parallax space (aka Gaia observations) affect a simple regress model
+-   | `GaiaAdversarial.ipynb`_
+    | To show the adversarial training process
 -   | `Inference.ipynb`_
     | It describes inference, NN performance and NN uncertainty
 -   | `Jacobian.ipynb`_
@@ -57,6 +59,7 @@ Incomplete list of notebook
 
 .. _Datasets_Data_Reduction.ipynb: Datasets_Data_Reduction.ipynb
 .. _Parallax_Offset_PolyModels.ipynb: Parallax_Offset_PolyModels.ipynb
+.. _GaiaAdversarial.ipynb: GaiaAdversarial.ipynb
 .. _Inference.ipynb: Inference.ipynb
 .. _Jacobian.ipynb: Jacobian.ipynb
 .. _APOGEE_RC_N_Distance.ipynb: APOGEE_RC_N_Distance.ipynb
