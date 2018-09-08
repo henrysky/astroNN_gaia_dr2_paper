@@ -7,8 +7,8 @@
         4
     ],
     "hidden": [
-        196,
-        96
+        162,
+        64
     ],
     "id": "ApogeeBCNN",
     "input": [
@@ -7540,12 +7540,13 @@
     "l2": 5e-09,
     "labels": 1,
     "labels_mean": [
-        136.4745998638386
+        0.0
     ],
-    "labels_norm_mode": 2,
+    "labels_norm_mode": 4,
     "labels_std": [
-        252.54298494654682
+        252.5429849465468
     ],
+    "last_layer_activation": "softplus",
     "length_scale": 3,
     "maxnorm": null,
     "pool_length": 4,

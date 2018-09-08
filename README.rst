@@ -64,7 +64,7 @@ Incomplete list of notebook
 .. _Jacobian.ipynb: Jacobian.ipynb
 .. _APOGEE_RC_N_Distance.ipynb: APOGEE_RC_N_Distance.ipynb
 
-Neural Net Models and quantity conversion
+Neural Net Models and Quantity Conversion
 -----------------------------------------------
 - ``astroNN_Ks_fakemag`` is a trained astroNN's `ApogeeBCNN()`_ class model to infer Ks-Band `fakemag`_.
 
@@ -99,9 +99,9 @@ To converse NN Ks-band fakemag and fakemag uncertainty to astrometric quantities
     parallax, parallax_uncertainty = fakemag_to_parallax(nn_fakemag, ks_magnitude, nn_fakemag_uncertainty)
 
     # OR you can provide input without uncertainty
-    # outputs carry astropy unit
+    # output carries astropy unit
     parsec = fakemag_to_pc(nn_fakemag, ks_magnitude)
-    # outputs carry astropy unit
+    # output carries astropy unit
     parallax = fakemag_to_parallax(nn_fakemag, ks_magnitude)
 
 To converse NN Ks-band fakemag and fakemag uncertainty to log solar luminosity, you can
@@ -112,9 +112,13 @@ To converse NN Ks-band fakemag and fakemag uncertainty to log solar luminosity, 
 
     logsol = fakemag_to_logsol(nn_fakemag, band='Ks')
 
-astroNN Apogee DR14 Distance
--------------------------------
-``apogee_dr14_nn_dist_0562.fits`` is compiled prediction with ``astroNN_Ks_fakemag_adversial`` on the whole Apogee DR14. To load it with python
+astroNN Apogee DR14 Distance and initialize as galpy Orbits
+-------------------------------------------------------------
+``apogee_dr14_nn_dist_0562.fits`` is compiled prediction with ``astroNN_Ks_fakemag_adversial`` on the whole Apogee DR14.
+
+To load it with python and to initialize orbit with `galpy`_
+
+.. _galpy: https://github.com/jobovy/galpy
 
 .. code-block:: python
 
@@ -125,8 +129,42 @@ astroNN Apogee DR14 Distance
     location_id = f['LOCATION_ID']  # APOGEE DR14 location id
     ra = f['RA']  # J2000 RA
     dec = f['DEC']  # J2000 DEC
-    nn_prediction = f['pc']  # neural network prediction in Parsec
-    nn_uncertainty = f['pc_error']  # neural network uncertainty in Parsec
+    nn_prediction = f['fakemag']  # neural network Ks-band fakemag prediction
+    nn_uncertainty = f['fakemag_error']  # neural network Ks-band fakemag uncertainty
+    nn_prediction = f['pc']  # distance in parsec
+    nn_uncertainty = f['pc_error']  # distance uncertainty in parsec
+    
+    # Gaia DR2 Data
+    ra_j2015_5 = f['RA_J2015.5']  # RA J2015.5
+    dec_j2015_5 = f['DEC_J2015.5']  # DEC J2015.5
+    pmra = f['pmra']  # RA proper motion
+    pmra_error = f['pmra_error']  # RA proper motion error
+    pmdec = f['pmdec']  # DEC proper motion
+    pmdec_error = f['pmdec_error']  # DEC proper motion error
+    pmdec = f['pmdec']  # DEC proper motion
+    phot_g_mean_mag = f['phot_g_mean_mag']  # g-band magnitude
+    bp_rp = f['bp_rp']  # bp_rp colour
+
+    # To convert to 3D position and 3D velocity
+    import astropy.units as u
+    import astropy.coordinates as coord
+    from astroNN.apogee import allstar
+    from galpy.orbit import Orbit
+    f_allstardr14 = fits.getdata(allstar(dr=14))
+
+    # because the catalog contains -9999.
+    non_n9999_idx = [(pmra !=-9999.) & (pmdec !=-9999.) & (nn_prediction !=-9999.)]
+    c = coord.SkyCoord(ra=ra_j2015_5[non_n9999_idx]*u.degree,
+                       dec=dec_j2015_5[non_n9999_idx]*u.degree,
+                       distance=nn_prediction[non_n9999_idx]*u.pc,
+                       pm_ra_cosdec=pmra[non_n9999_idx]*u.mas/u.yr,
+                       pm_dec=pmdec[non_n9999_idx]*u.mas/u.yr,
+                       radial_velocity=f_allstardr14['VHELIO_AVG'][non_n9999_idx]*u.km/u.s)
+
+    # galpy Orbit object
+    o = Orbit(c)
+    x, y, z = o.x(), o.y(), o.z()    # 3D position
+    vx, vy, vz = o.vx(), o.vy(), o.vz()    # 3D velocity
 
 Using Neural Net on arbitrary APOGEE spectra
 -----------------------------------------------
