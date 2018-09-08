@@ -129,8 +129,8 @@ To load it with python and to initialize orbit with `galpy`_
     location_id = f['LOCATION_ID']  # APOGEE DR14 location id
     ra = f['RA']  # J2000 RA
     dec = f['DEC']  # J2000 DEC
-    nn_prediction = f['fakemag']  # neural network Ks-band fakemag prediction
-    nn_uncertainty = f['fakemag_error']  # neural network Ks-band fakemag uncertainty
+    fakemag = f['fakemag']  # neural network Ks-band fakemag prediction
+    fakemag_error = f['fakemag_error']  # neural network Ks-band fakemag uncertainty
     nn_prediction = f['pc']  # distance in parsec
     nn_uncertainty = f['pc_error']  # distance uncertainty in parsec
     
