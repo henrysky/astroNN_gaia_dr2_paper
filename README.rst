@@ -104,7 +104,7 @@ To converse NN Ks-band fakemag and fakemag uncertainty to astrometric quantities
     # output carries astropy unit
     parallax = fakemag_to_parallax(nn_fakemag, ks_magnitude)
 
-To converse NN Ks-band fakemag and fakemag uncertainty to log solar luminosity, you can
+To converse NN Ks-band fakemag to log solar luminosity, you can
 
 .. code-block:: python
 
@@ -116,7 +116,7 @@ astroNN Apogee DR14 Distance and initialize as galpy Orbits
 -------------------------------------------------------------
 ``apogee_dr14_nn_dist_0562.fits`` is compiled prediction with ``astroNN_Ks_fakemag_adversial`` on the whole Apogee DR14.
 
-To load it with python and to initialize orbit with `galpy`_
+To load it with python and to initialize orbit with `galpy`_ (requires galpy>=1.4 and astropy>3)
 
 .. _galpy: https://github.com/jobovy/galpy
 
@@ -129,12 +129,12 @@ To load it with python and to initialize orbit with `galpy`_
     location_id = f['LOCATION_ID']  # APOGEE DR14 location id
     ra = f['RA']  # J2000 RA
     dec = f['DEC']  # J2000 DEC
-    fakemag = f['fakemag']  # neural network Ks-band fakemag prediction
-    fakemag_error = f['fakemag_error']  # neural network Ks-band fakemag uncertainty
-    nn_prediction = f['pc']  # distance in parsec
-    nn_uncertainty = f['pc_error']  # distance uncertainty in parsec
+    fakemag = f['fakemag']  # neural network Ks-band fakemag prediction, contains -9999.
+    fakemag_error = f['fakemag_error']  # neural network Ks-band fakemag uncertainty, contains -9999.
+    nn_prediction = f['pc']  # distance in parsec, contains -9999.
+    nn_uncertainty = f['pc_error']  # distance uncertainty in parsec, contains -9999.
     
-    # Gaia DR2 Data
+    # Gaia DR2 Data, contains -9999.
     ra_j2015_5 = f['RA_J2015.5']  # RA J2015.5
     dec_j2015_5 = f['DEC_J2015.5']  # DEC J2015.5
     pmra = f['pmra']  # RA proper motion
@@ -146,10 +146,12 @@ To load it with python and to initialize orbit with `galpy`_
     bp_rp = f['bp_rp']  # bp_rp colour
 
     # To convert to 3D position and 3D velocity
-    import astropy.units as u
-    import astropy.coordinates as coord
     from astroNN.apogee import allstar
     from galpy.orbit import Orbit
+    import astropy.units as u
+    import astropy.coordinates as coord
+    from astropy.coordinates import CartesianDifferential
+
     f_allstardr14 = fits.getdata(allstar(dr=14))
 
     # because the catalog contains -9999.
@@ -159,7 +161,10 @@ To load it with python and to initialize orbit with `galpy`_
                        distance=nn_prediction[non_n9999_idx]*u.pc,
                        pm_ra_cosdec=pmra[non_n9999_idx]*u.mas/u.yr,
                        pm_dec=pmdec[non_n9999_idx]*u.mas/u.yr,
-                       radial_velocity=f_allstardr14['VHELIO_AVG'][non_n9999_idx]*u.km/u.s)
+                       radial_velocity=f_allstardr14['VHELIO_AVG'][non_n9999_idx]*u.km/u.s,
+                       galcen_distance=8.125*u.kpc, # https://arxiv.org/abs/1807.09409
+                       z_sun=20.8*u.pc, # Bennett, Bovy (2018)[https://arxiv.org/abs/1809.03507]
+                       galcen_v_sun=CartesianDifferential([11.1, 245.7, 7.25]*u.km/u.s))
 
     # galpy Orbit object
     o = Orbit(c)
