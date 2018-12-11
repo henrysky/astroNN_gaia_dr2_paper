@@ -20,7 +20,14 @@ Python 3.6 or above and reasonable computational resource is required.
 Extensive documentation at http://astroNN.readthedocs.io and quick start guide at
 http://astronn.readthedocs.io/en/latest/quick_start.html
 
-Some notebooks make use of `milkyway_plot`_ to plot on milkyway.
+astroNN Apogee DR14 Distance data is available as `apogee_dr14_nn_dist.fits`_.
+
+Some notebooks make use of `milkyway_plot`_ to plot on milkyway. Some notebooks make use of data from
+**Deep learning of multi-element abundances from high-resolution spectroscopic data** [`arXiv:1804.08622`_][`ADS`_] and its\
+data product avaliable at https://github.com/henrysky/astroNN_spectra_paper_figures
+
+.. _arXiv:1804.08622: https://arxiv.org/abs/1808.04428
+.. _ADS: https://ui.adsabs.harvard.edu/#abs/2018arXiv180804428L/
 
 .. _astroNN: https://github.com/henrysky/astroNN
 .. _milkyway_plot: https://github.com/henrysky/milkyway_plot
@@ -61,11 +68,15 @@ Neural Net Models and Quantity Conversion
 
 It is recommend to use model ends with ``_reduced`` for example, using ``astroNN_constant_model_reduced`` instead of ``astroNN_constant_model``
 
-- ``astroNN_apogee14_gaia2_no_offset`` is a astroNN's `ApogeeBCNN()`_ class model to infer Ks-Band `fakemag`_ trained on unmodified Gaia parallax without offset model.
+- ``astroNN_apogee14_gaia2_no_offset`` is a astroNN's `ApogeeBCNN()`_ class model to infer Ks-Band `fakemag`_ without offset model.
 
-- ``astroNN_constant_model`` is a astroNN's `ApogeeDR14GaiaDR2BCNN()`_ class model to infer Ks-Band `fakemag`_
+- ``astroNN_constant_model`` is a astroNN's `ApogeeDR14GaiaDR2BCNN()`_ class model to infer Ks-Band `fakemag`_ with a constant offset model
 
-- ``astroNN_constant_model_reduced`` is a astroNN's `ApogeeBCNN()`_ class model reduced from ``astroNN_constant_model``
+- ``astroNN_constant_model_reduced`` is a astroNN's `ApogeeBCNN()`_ class model extracted from ``astroNN_constant_model``
+
+- ``astroNN_multivariate_model`` is a astroNN's `ApogeeDR14GaiaDR2BCNN()`_ class model to infer Ks-Band `fakemag`_ with a multivariate offset model
+
+- ``astroNN_multivariate_model_reduced`` is a astroNN's `ApogeeBCNN()`_ class model extracted from ``astroNN_multivariate_model``
 
 .. _ApogeeBCNN(): http://astronn.readthedocs.io/en/latest/neuralnets/apogee_bcnn.html
 .. _ApogeeDR14GaiaDR2BCNN(): https://astronn.readthedocs.io/en/latest/neuralnets/apogeedr14_gaiadr2_bcnn.html
@@ -112,8 +123,11 @@ To convert NN Ks-band fakemag to log10 solar luminosity, you can
 
 astroNN Apogee DR14 Distance & Data Model
 -------------------------------------------
-``apogee_dr14_nn_dist.fits`` is compiled prediction with ``astroNN_constant_model_reduced`` on the whole Apogee DR14.
+
+`apogee_dr14_nn_dist.fits`_ is compiled prediction with ``astroNN_constant_model_reduced`` on the whole Apogee DR14.
 The code used to generate this file is described in `Inference.ipynb`_
+
+.. _apogee_dr14_nn_dist.fits: apogee_dr14_nn_dist.fits
 
 To load it with python and to initialize orbit with `galpy`_ (requires galpy>=1.4 and astropy>3)
 
