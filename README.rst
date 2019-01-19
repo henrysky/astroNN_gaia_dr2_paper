@@ -198,6 +198,36 @@ In addition, you can use galpy to convert to useful quantity with the following 
     x, y, z = o.x(), o.y(), o.z()    # 3D position
     vx, vy, vz = o.vx(), o.vy(), o.vz()    # 3D velocity
 
+Or you can use an experimental feature of galpy to setup `Orbits` class which allow you to integrate orbit in parallel
+
+.. code-block:: python
+
+    # To convert to 3D position and 3D velocity
+    from astroNN.apogee import allstar
+    from galpy.orbit import Orbits
+    import astropy.units as u
+    import astropy.coordinates as coord
+    from astropy.coordinates import CartesianDifferential
+
+    f_allstardr14 = fits.getdata(allstar(dr=14))
+
+    # because the catalog contains -9999.
+    non_n9999_idx = ((pmra !=-9999.) & (pmdec !=-9999.) & (nn_parsec !=-9999.))
+    c = coord.SkyCoord(ra=ra_j2015_5[non_n9999_idx]*u.degree,
+                       dec=dec_j2015_5[non_n9999_idx]*u.degree,
+                       distance=nn_parsec[non_n9999_idx]*u.pc,
+                       pm_ra_cosdec=pmra[non_n9999_idx]*u.mas/u.yr,
+                       pm_dec=pmdec[non_n9999_idx]*u.mas/u.yr,
+                       radial_velocity=f_allstardr14['VHELIO_AVG'][non_n9999_idx]*u.km/u.s,
+                       galcen_distance=8.125*u.kpc, # https://arxiv.org/abs/1807.09409 (GRAVITY Collaboration 2018)
+                       z_sun=20.8*u.pc, # https://arxiv.org/abs/1809.03507 (Bennett & Bovy 2018)
+                       galcen_v_sun=CartesianDifferential([11.1, 245.7, 7.25]*u.km/u.s))
+
+    # galpy Orbits object
+    os = Orbits(c)
+    x, y, z = os.x(), os.y(), os.z()    # 3D position
+    vx, vy, vz = os.vx(), os.vy(), os.vz()    # 3D velocity
+
 Using Neural Net on arbitrary APOGEE spectra
 -----------------------------------------------
 
