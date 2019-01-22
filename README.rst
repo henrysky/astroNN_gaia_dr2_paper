@@ -47,21 +47,18 @@ Incomplete list of notebook
 -   | `Offset_Gaia.ipynb`_
     | It describes the result of Gaia offset
 -   | `Inference.ipynb`_
-    | It describes inference, NN performance and NN uncertainty
+    | It describes inference, NN performance and NN uncertainty. And how to generate distances for the whole APOGEE DR14.
 -   | `Jacobian.ipynb`_
     | It describes jacobian analysis.
--   | `APOGEE_RC_N_Distance.ipynb`_
-    | It describes the evaluation of NNs on APOGEE DR14 Red Clumps catalog and BPG distances
--   | `APOGEE_DR14_NN_Catalog.ipynb`_
-    | It describes how to generate distances for the whole APOGEE DR14
+-   | `MW_Science.ipynb`_
+    | It describes some MilkyWay Science plots
 
 .. _Datasets_Data_Reduction.ipynb: Datasets_Data_Reduction.ipynb
-.. _Offset_Gaia.ipynb: Offset_Gaia.ipynb
 .. _Trainnig.ipynb: Trainnig.ipynb
+.. _Offset_Gaia.ipynb: Offset_Gaia.ipynb
 .. _Inference.ipynb: Inference.ipynb
 .. _Jacobian.ipynb: Jacobian.ipynb
-.. _APOGEE_RC_N_Distance.ipynb: APOGEE_RC_N_Distance.ipynb
-.. _APOGEE_DR14_NN_Catalog.ipynb: APOGEE_DR14_NN_Catalog.ipynb
+.. _MW_Science.ipynb: MW_Science.ipynb
 
 Neural Net Models and Quantity Conversion
 -----------------------------------------------
