@@ -23,11 +23,11 @@ http://astronn.readthedocs.io/en/latest/quick_start.html
 astroNN Apogee DR14 Distance data is available as `apogee_dr14_nn_dist.fits`_.
 
 Some notebooks make use of `milkyway_plot`_ to plot on milkyway. Some notebooks make use of data from
-**Deep learning of multi-element abundances from high-resolution spectroscopic data** [`arXiv:1804.08622`_][`ADS`_] and its\
-data product avaliable at https://github.com/henrysky/astroNN_spectra_paper_figures
+**Deep learning of multi-element abundances from high-resolution spectroscopic data** [`arXiv:1804.08622`_][`ADS`_] and its \
+data product available at https://github.com/henrysky/astroNN_spectra_paper_figures
 
 .. _arXiv:1804.08622: https://arxiv.org/abs/1808.04428
-.. _ADS: https://ui.adsabs.harvard.edu/#abs/2018arXiv180804428L/
+.. _ADS: https://ui.adsabs.harvard.edu/#abs/2019MNRAS.483.3255L/
 
 .. _astroNN: https://github.com/henrysky/astroNN
 .. _milkyway_plot: https://github.com/henrysky/milkyway_plot

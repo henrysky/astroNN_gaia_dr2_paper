@@ -7545,7 +7545,7 @@
     ],
     "labels_norm_mode": 0,
     "labels_std": [
-        1.0
+        104.31637596726364
     ],
     "last_layer_activation": "softplus",
     "length_scale": 3,
