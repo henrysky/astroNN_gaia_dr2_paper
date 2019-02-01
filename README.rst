@@ -42,8 +42,9 @@ Incomplete list of notebook
 
 -   | `Datasets_Data_Reduction.ipynb`_
     | You should check out this notebook first as it describes how to reproduce the **exactly** same datasets used in the paper
--   | `Trainnig.ipynb`_
-    | It provided the code used to train ``astroNN_no_offset_model``, ``astroNN_constant_model`` and ``astroNN_multivariate_model``
+-   | `Trainig.ipynb`_
+    | It provides the code used to train ``astroNN_no_offset_model``, ``astroNN_constant_model`` and ``astroNN_multivariate_model``
+    | It provides a minimal model code (in pure Tensorflow without astroNN) to help you understand what is the core logic of the model
 -   | `Offset_Gaia.ipynb`_
     | It describes the result of Gaia offset
 -   | `Inference.ipynb`_
@@ -54,7 +55,7 @@ Incomplete list of notebook
     | It describes some MilkyWay Science plots
 
 .. _Datasets_Data_Reduction.ipynb: Datasets_Data_Reduction.ipynb
-.. _Trainnig.ipynb: Trainnig.ipynb
+.. _Trainig.ipynb: Trainig.ipynb
 .. _Offset_Gaia.ipynb: Offset_Gaia.ipynb
 .. _Inference.ipynb: Inference.ipynb
 .. _Jacobian.ipynb: Jacobian.ipynb
@@ -65,7 +66,7 @@ Neural Net Models and Quantity Conversion
 
 It is recommend to use model ends with ``_reduced`` for example, using ``astroNN_constant_model_reduced`` instead of ``astroNN_constant_model``
 
-- ``astroNN_apogee14_gaia2_no_offset`` is a astroNN's `ApogeeBCNN()`_ class model to infer Ks-Band `fakemag`_ without offset model.
+- ``astroNN_no_offset_model`` is a astroNN's `ApogeeBCNN()`_ class model to infer Ks-Band `fakemag`_ without offset model.
 
 - ``astroNN_constant_model`` is a astroNN's `ApogeeDR14GaiaDR2BCNN()`_ class model to infer Ks-Band `fakemag`_ with a constant offset model
 
