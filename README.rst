@@ -44,7 +44,7 @@ Incomplete list of notebook
     | You should check out this notebook first as it describes how to reproduce the **exactly** same datasets used in the paper
 -   | `Trainig.ipynb`_
     | It provides the code used to train ``astroNN_no_offset_model``, ``astroNN_constant_model`` and ``astroNN_multivariate_model``
-    | It provides a minimal model code (in pure Tensorflow without astroNN) to help you understand what is the core logic of the model
+    | It provides a minimal model code (in pure Tensorflow and pure PyTorch) to help you understand what is the core logic of the model
 -   | `Offset_Gaia.ipynb`_
     | It describes the result of Gaia offset
 -   | `Inference.ipynb`_
