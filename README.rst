@@ -20,7 +20,7 @@ Python 3.6 or above and reasonable computational resource is required.
 Extensive documentation at http://astroNN.readthedocs.io and quick start guide at
 http://astronn.readthedocs.io/en/latest/quick_start.html
 
-astroNN Apogee DR14 Distance data is available as `apogee_dr14_nn_dist.fits`_.
+astroNN Apogee DR14 Distance data is available as `apogee_dr14_nn_dist.fits`_
 
 Some notebooks make use of `milkyway_plot`_ to plot on milkyway. Some notebooks make use of data from
 **Deep learning of multi-element abundances from high-resolution spectroscopic data** [`arXiv:1804.08622`_][`ADS`_] and its \
@@ -35,6 +35,8 @@ data product available at https://github.com/henrysky/astroNN_spectra_paper_figu
 To continuum normalize arbitrary APOGEE spectrum, see:
 http://astronn.readthedocs.io/en/latest/tools_apogee.html#pseudo-continuum-normalization-of-apogee-spectra
 
+A legacy version of data file available as `apogee_dr14_nn_dist_0562.fits`_ in which 56.2uas offset is applied directly to train.
+
 Jupyter Notebook
 ------------------
 
@@ -42,8 +44,8 @@ Incomplete list of notebook
 
 -   | `Datasets_Data_Reduction.ipynb`_
     | You should check out this notebook first as it describes how to reproduce the **exactly** same datasets used in the paper
--   | `Trainig.ipynb`_
-    | It provides the code used to train ``astroNN_no_offset_model``, ``astroNN_constant_model`` and ``astroNN_multivariate_model``
+-   | `Training.ipynb`_
+    | It provides the code used to train ``astroNN_no_offset_model``, ``astroNN_constlant_model`` and ``astroNN_multivariate_model``
     | It provides a minimal model code (in pure Tensorflow and pure PyTorch) to help you understand what is the core logic of the model
 -   | `Offset_Gaia.ipynb`_
     | It describes the result of Gaia offset
@@ -55,7 +57,7 @@ Incomplete list of notebook
     | It describes some MilkyWay Science plots
 
 .. _Datasets_Data_Reduction.ipynb: Datasets_Data_Reduction.ipynb
-.. _Trainig.ipynb: Trainig.ipynb
+.. _Training.ipynb: Training.ipynb
 .. _Offset_Gaia.ipynb: Offset_Gaia.ipynb
 .. _Inference.ipynb: Inference.ipynb
 .. _Jacobian.ipynb: Jacobian.ipynb
@@ -126,6 +128,7 @@ astroNN Apogee DR14 Distance & Data Model
 The code used to generate this file is described in `Inference.ipynb`_
 
 .. _apogee_dr14_nn_dist.fits: apogee_dr14_nn_dist.fits
+.. _apogee_dr14_nn_dist_0562.fits: apogee_dr14_nn_dist_0562.fits
 
 To load it with python and to initialize orbit with `galpy`_ (requires galpy>=1.4 and astropy>3)
 
