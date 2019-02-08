@@ -244,7 +244,7 @@ To do inference on an arbitrary APOGEE spectrum to get distance,
     from astroNN.gaia import extinction_correction, fakemag_to_pc
     from astroNN.models import load_folder
 
-    # arbitary spectrum
+    # arbitrary spectrum
     f = fits.open(visit_spectra(dr=14, apogee='2M19060637+4717296'))
     spectrum = f[1].data
     spectrum_err = f[2].data
