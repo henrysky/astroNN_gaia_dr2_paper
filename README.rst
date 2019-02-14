@@ -2,10 +2,20 @@
 Abstract
 ===========
 
-To be written (づ｡◕‿‿◕｡)づ.
-
-But you can learn more about how astroNN is applied on APOGEE spectra to infer stellar parameters and abundances in this
-repository: https://github.com/henrysky/astroNN_spectra_paper_figures
+Gaia measures the five astrometric parameters for stars in the Milky Way, but only four of them (positions and proper
+motion, but not parallax) are well measured beyond a few kpc from the Sun. Modern spectroscopic surveys such as APOGEE
+cover a large area of the Milky Way disk and we can use the relation between spectra and luminosity to determine distances
+to stars beyond Gaia's parallax reach. Here, we design a deep neural network trained on stars in common between Gaia
+and APOGEE that determines spectro-photometric distances to APOGEE stars, while including a flexible model to calibrate
+parallax zero-point biases in Gaia DR2. We determine the zero-point offset to be -52.3 +/- 2.0uas when modeling
+it as a global constant, but also train a multivariate zero-point offset model that depends on G, G_BP - G_RP color,
+and T_eff and that can be applied to all 139 million stars in Gaia DR2 within APOGEE's color--magnitude range.
+Our spectro-photometric distances are more precise than Gaia at distances ≈2kpc from the Sun.
+We release a catalog of spectro-photometric distances for the entire APOGEE DR14 data set which covers Galactocentric radii
+2kpc<≈R<≈19kpc; ≈150,000 stars have <10 uncertainty, making this a
+powerful sample to study the chemo-dynamical structure of the disk. We use this sample to map the mean \xh{Fe} and 15
+abundance ratios [X/Fe] from the Galactic center to the edge of the disk. Among many interesting trends, we find that
+the bulge and bar region at R<≈5kpc clearly stands out in [Fe/H] and most abundance ratios.
 
 Getting Started
 =================
