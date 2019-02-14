@@ -38,7 +38,8 @@ data product available at https://github.com/henrysky/astroNN_spectra_paper_figu
 To continuum normalize arbitrary APOGEE spectrum, see:
 http://astronn.readthedocs.io/en/latest/tools_apogee.html#pseudo-continuum-normalization-of-apogee-spectra
 
-A legacy version of data file available as `apogee_dr14_nn_dist_0562.fits`_ in which 56.2uas offset is applied directly to train.
+A legacy version of data file available as `apogee_dr14_nn_dist_0562.fits`_ in which 56.2uas offset is applied directly to train,
+and its data model will not be provided.
 
 Jupyter Notebook
 ------------------
@@ -144,16 +145,18 @@ To load it with python and to initialize orbit with `galpy`_ (requires galpy>=1.
     # read the data file
     f = fits.getdata("apogee_dr14_nn_dist.fits")
 
+    # ========= see our paper for the most accurate descriptive data model ========= #
+
     # APOGEE and NN data, contains -9999. for unknown/bad data
-    apogee_id = f['APOGEE_ID']  # APOGEE's apogee id
-    location_id = f['LOCATION_ID']  # APOGEE DR14 location id
-    ra = f['RA']  # J2000 RA
-    dec = f['DEC']  # J2000 DEC
+    apogee_id = f['apogee_id']  # APOGEE's apogee id
+    location_id = f['location_id']  # APOGEE DR14 location id
+    ra_apogee = f['ra_apogee']  # J2000 RA
+    dec_apogee = f['dec_apogee']  # J2000 DEC
     fakemag = f['fakemag']  # NN Ks-band fakemag prediction
     fakemag_error = f['fakemag_error']  # NN Ks-band fakemag uncertainty
-    nn_parsec = f['pc']  # NN inverse parallax in parsec
-    nn_parsec_uncertainty = f['pc_error']  # NN inverse parallax total uncertainty in parsec
-    nn_parsec_model_uncertainty = f['pc_model_error']  # NN inverse parallax model uncertainty in parsec
+    nn_parsec = f['dist']  # NN inverse parallax in parsec
+    nn_parsec_uncertainty = f['dist_error']  # NN inverse parallax total uncertainty in parsec
+    nn_parsec_model_uncertainty = f['dist_model_error']  # NN inverse parallax model uncertainty in parsec
     nn_plx = f['nn_parallax']  # NN parallax in mas
     nn_plx_uncertainty = f['nn_parallax_error']  # NN parallax uncertainty in mas
     nn_plx_model_uncertainty = f['nn_parallax_model_error']  # NN parallax model uncertainty in mas
@@ -161,8 +164,8 @@ To load it with python and to initialize orbit with `galpy`_ (requires galpy>=1.
     weighted_plx_uncertainty = f['weighted_parallax_error']  # inv var weighted NN & Gaia parallax uncertainty in mas
 
     # Gaia DR2 Data, contains -9999. for unknown/bad data
-    ra_j2015_5 = f['RA_J2015.5']  # RA J2015.5
-    dec_j2015_5 = f['DEC_J2015.5']  # DEC J2015.5
+    ra = f['ra']  # RA J2015.5
+    dec = f['dec']  # DEC J2015.5
     pmra = f['pmra']  # RA proper motion
     pmra_error = f['pmra_error']  # RA proper motion error
     pmdec = f['pmdec']  # DEC proper motion
@@ -187,8 +190,8 @@ In addition, you can use galpy to convert to useful quantity with the following 
 
     # because the catalog contains -9999.
     non_n9999_idx = ((pmra !=-9999.) & (pmdec !=-9999.) & (nn_parsec !=-9999.))
-    c = coord.SkyCoord(ra=ra_j2015_5[non_n9999_idx]*u.degree,
-                       dec=dec_j2015_5[non_n9999_idx]*u.degree,
+    c = coord.SkyCoord(ra=ra[non_n9999_idx]*u.degree,
+                       dec=dec[non_n9999_idx]*u.degree,
                        distance=nn_parsec[non_n9999_idx]*u.pc,
                        pm_ra_cosdec=pmra[non_n9999_idx]*u.mas/u.yr,
                        pm_dec=pmdec[non_n9999_idx]*u.mas/u.yr,
@@ -217,8 +220,8 @@ Or you can use an experimental feature of galpy to setup ``Orbits`` class which 
 
     # because the catalog contains -9999.
     non_n9999_idx = ((pmra !=-9999.) & (pmdec !=-9999.) & (nn_parsec !=-9999.))
-    c = coord.SkyCoord(ra=ra_j2015_5[non_n9999_idx]*u.degree,
-                       dec=dec_j2015_5[non_n9999_idx]*u.degree,
+    c = coord.SkyCoord(ra=ra[non_n9999_idx]*u.degree,
+                       dec=dec[non_n9999_idx]*u.degree,
                        distance=nn_parsec[non_n9999_idx]*u.pc,
                        pm_ra_cosdec=pmra[non_n9999_idx]*u.mas/u.yr,
                        pm_dec=pmdec[non_n9999_idx]*u.mas/u.yr,
