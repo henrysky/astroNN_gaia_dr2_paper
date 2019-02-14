@@ -22,7 +22,9 @@ http://astronn.readthedocs.io/en/latest/quick_start.html
 
 astroNN Apogee DR14 Distance data is available as `apogee_dr14_nn_dist.fits`_
 
-Some notebooks make use of `milkyway_plot`_ to plot on milkyway. Some notebooks make use of data from
+Some notebooks make use of `milkyway_plot`_ to plot on milkyway and `gaia_tools`_ to do query.
+
+Some notebooks make use of data from
 **Deep learning of multi-element abundances from high-resolution spectroscopic data** [`arXiv:1804.08622`_][`ADS`_] and its \
 data product available at https://github.com/henrysky/astroNN_spectra_paper_figures
 
@@ -31,6 +33,7 @@ data product available at https://github.com/henrysky/astroNN_spectra_paper_figu
 
 .. _astroNN: https://github.com/henrysky/astroNN
 .. _milkyway_plot: https://github.com/henrysky/milkyway_plot
+.. _gaia_tools: https://github.com/jobovy/gaia_tools
 
 To continuum normalize arbitrary APOGEE spectrum, see:
 http://astronn.readthedocs.io/en/latest/tools_apogee.html#pseudo-continuum-normalization-of-apogee-spectra
