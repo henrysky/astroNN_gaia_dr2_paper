@@ -173,8 +173,8 @@ To load it with python and to initialize orbit with `galpy`_ (requires galpy>=1.
     nn_plx = f['nn_parallax']  # NN parallax in mas
     nn_plx_uncertainty = f['nn_parallax_error']  # NN parallax uncertainty in mas
     nn_plx_model_uncertainty = f['nn_parallax_model_error']  # NN parallax model uncertainty in mas
-    weighted_plx = f['weighted_parallax']  # inv var weighted NN & Gaia parallax in mas
-    weighted_plx_uncertainty = f['weighted_parallax_error']  # inv var weighted NN & Gaia parallax uncertainty in mas
+    weighted_dist = f['weighted_dist']  # inv var weighted NN & Gaia distance in parsec
+    weighted_dist_uncertainty = f['weighted_dist_error']  # inv var weighted NN & Gaia distance uncertainty in parsec
 
     # Gaia DR2 Data, contains -9999. for unknown/bad data
     ra = f['ra']  # RA J2015.5
@@ -188,37 +188,13 @@ To load it with python and to initialize orbit with `galpy`_ (requires galpy>=1.
     bp_rp = f['bp_rp']  # bp_rp colour
 
 
-In addition, you can use galpy to convert to useful quantity with the following code
+In addition, you can use an experimental feature of galpy to setup ``Orbits`` class which allow you to handle orbits in parallel.
 
-.. code-block:: python
+The ``Orbits`` galpy branch: https://github.com/jobovy/galpy/tree/orbits and I have compiled 2 galpy 1.5dev0 wheels for Windows user with ``Orbits``: [`galpy py36 win64`_], [`galpy py37 win64`_]
 
-    # To convert to 3D position and 3D velocity
-    from astroNN.apogee import allstar
-    from galpy.orbit import Orbit
-    import astropy.units as u
-    import astropy.coordinates as coord
-    from astropy.coordinates import CartesianDifferential
+.. _galpy py36 win64: https://drive.google.com/open?id=1U7mM1gy9QMC3sQB65KjMFQUBl_ioyRN0
+.. _galpy py37 win64: https://drive.google.com/open?id=1i16d6k2SxWHN8mbfyrl0aTf81UQRxAno
 
-    f_allstardr14 = fits.getdata(allstar(dr=14))
-
-    # because the catalog contains -9999.
-    non_n9999_idx = ((pmra !=-9999.) & (pmdec !=-9999.) & (nn_parsec !=-9999.))
-    c = coord.SkyCoord(ra=ra[non_n9999_idx]*u.degree,
-                       dec=dec[non_n9999_idx]*u.degree,
-                       distance=nn_parsec[non_n9999_idx]*u.pc,
-                       pm_ra_cosdec=pmra[non_n9999_idx]*u.mas/u.yr,
-                       pm_dec=pmdec[non_n9999_idx]*u.mas/u.yr,
-                       radial_velocity=f_allstardr14['VHELIO_AVG'][non_n9999_idx]*u.km/u.s,
-                       galcen_distance=8.125*u.kpc, # https://arxiv.org/abs/1807.09409 (GRAVITY Collaboration 2018)
-                       z_sun=20.8*u.pc, # https://arxiv.org/abs/1809.03507 (Bennett & Bovy 2018)
-                       galcen_v_sun=CartesianDifferential([11.1, 245.7, 7.25]*u.km/u.s))
-
-    # galpy Orbit object
-    o = Orbit(c)
-    x, y, z = o.x(), o.y(), o.z()    # 3D position
-    vx, vy, vz = o.vx(), o.vy(), o.vz()    # 3D velocity
-
-Or you can use an experimental feature of galpy to setup ``Orbits`` class which allow you to integrate orbit in parallel
 
 .. code-block:: python
 
