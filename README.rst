@@ -78,7 +78,7 @@ Incomplete list of notebook
 .. _Inference.ipynb: Inference.ipynb
 .. _Jacobian.ipynb: Jacobian.ipynb
 .. _MW_Science.ipynb: MW_Science.ipynb
-.. _nn_figure1_draw_io: https://github.com/henrysky/astroNN_gaia_dr2_paper/raw/master/_nn_figure6_draw_io
+.. _nn_figure1_draw_io: https://github.com/henrysky/astroNN_gaia_dr2_paper/raw/master/nn_figure1_draw_io
 
 Neural Net Models and Quantity Conversion
 -----------------------------------------------
