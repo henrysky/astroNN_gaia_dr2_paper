@@ -12,8 +12,8 @@ it as a global constant, but also train a multivariate zero-point offset model t
 and T_eff and that can be applied to all 139 million stars in Gaia DR2 within APOGEE's color--magnitude range.
 Our spectro-photometric distances are more precise than Gaia at distances ≈2kpc from the Sun.
 We release a catalog of spectro-photometric distances for the entire APOGEE DR14 data set which covers Galactocentric radii
-2kpc<≈R<≈19kpc; ≈150,000 stars have <10 uncertainty, making this a
-powerful sample to study the chemo-dynamical structure of the disk. We use this sample to map the mean \xh{Fe} and 15
+2kpc<≈R<≈19kpc; ≈150,000 stars have <10% uncertainty, making this a
+powerful sample to study the chemo-dynamical structure of the disk. We use this sample to map the mean [Fe/H] and 15
 abundance ratios [X/Fe] from the Galactic center to the edge of the disk. Among many interesting trends, we find that
 the bulge and bar region at R<≈5kpc clearly stands out in [Fe/H] and most abundance ratios.
 
