@@ -69,6 +69,8 @@ Incomplete list of notebook
     | It describes jacobian analysis.
 -   | `MW_Science.ipynb`_
     | It describes some MilkyWay Science plots
+-   | `nn_figure1_draw_io`_
+    | Source for Figure 1 in paper for the NN model, can be opened and edited by draw.io
 
 .. _Datasets_Data_Reduction.ipynb: Datasets_Data_Reduction.ipynb
 .. _Training.ipynb: Training.ipynb
@@ -76,6 +78,7 @@ Incomplete list of notebook
 .. _Inference.ipynb: Inference.ipynb
 .. _Jacobian.ipynb: Jacobian.ipynb
 .. _MW_Science.ipynb: MW_Science.ipynb
+.. _nn_figure1_draw_io: https://github.com/henrysky/astroNN_gaia_dr2_paper/raw/master/_nn_figure6_draw_io
 
 Neural Net Models and Quantity Conversion
 -----------------------------------------------
@@ -141,8 +144,8 @@ astroNN Apogee DR14 Distance & Data Model
 `apogee_dr14_nn_dist.fits`_ is compiled prediction with ``astroNN_constant_model_reduced`` on the whole Apogee DR14.
 The code used to generate this file is described in `Inference.ipynb`_
 
-.. _apogee_dr14_nn_dist.fits: apogee_dr14_nn_dist.fits
-.. _apogee_dr14_nn_dist_0562.fits: apogee_dr14_nn_dist_0562.fits
+.. _apogee_dr14_nn_dist.fits: https://github.com/henrysky/astroNN_gaia_dr2_paper/raw/master/apogee_dr14_nn_dist.fits
+.. _apogee_dr14_nn_dist_0562.fits: https://github.com/henrysky/astroNN_gaia_dr2_paper/raw/master/apogee_dr14_nn_dist_0562.fits
 
 To load it with python and to initialize orbit with `galpy`_ (requires galpy>=1.4 and astropy>3)
 
