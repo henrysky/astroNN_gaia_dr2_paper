@@ -113,7 +113,7 @@ To load the model, open python outside ``your_astroNN_model``
     # To get what the output neurones are representing
     print(neuralnet.targetname)
 
-To convert NN Ks-band fakemag and fakemag uncertainty to astrometric quantities, you can
+To convert NN Ks-band fakemag (a pseudo luminosity scale) and its uncertainty to astrometric quantities, you can
 
 .. code-block:: python
 
@@ -130,7 +130,7 @@ To convert NN Ks-band fakemag and fakemag uncertainty to astrometric quantities,
     # output carries astropy unit
     parallax = fakemag_to_parallax(fakemag, ks_magnitude)
 
-To convert NN Ks-band fakemag to log10 solar luminosity, you can
+To convert NN Ks-band fakemag (a pseudo luminosity scale) to log10 solar luminosity, you can
 
 .. code-block:: python
 
@@ -165,8 +165,8 @@ To load it with python and to initialize orbit with `galpy`_ (requires galpy>=1.
     location_id = f['location_id']  # APOGEE DR14 location id
     ra_apogee = f['ra_apogee']  # J2000 RA
     dec_apogee = f['dec_apogee']  # J2000 DEC
-    fakemag = f['fakemag']  # NN Ks-band fakemag prediction
-    fakemag_error = f['fakemag_error']  # NN Ks-band fakemag uncertainty
+    fakemag = f['fakemag']  # NN Ks-band pseudo luminosity prediction
+    fakemag_error = f['fakemag_error']  # NN Ks-band pseudo luminosity uncertainty
     nn_parsec = f['dist']  # NN inverse parallax in parsec
     nn_parsec_uncertainty = f['dist_error']  # NN inverse parallax total uncertainty in parsec
     nn_parsec_model_uncertainty = f['dist_model_error']  # NN inverse parallax model uncertainty in parsec
