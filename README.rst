@@ -188,19 +188,13 @@ To load it with python and to initialize orbit with `galpy`_ (requires galpy>=1.
     bp_rp = f['bp_rp']  # bp_rp colour
 
 
-In addition, you can use an experimental feature of galpy to setup ``Orbits`` class which allow you to handle orbits in parallel.
-
-The ``Orbits`` galpy branch: https://github.com/jobovy/galpy/tree/orbits and I have compiled 2 galpy 1.5dev0 wheels for Windows user with ``Orbits``: [`galpy py36 win64`_], [`galpy py37 win64`_]
-
-.. _galpy py36 win64: https://drive.google.com/open?id=1U7mM1gy9QMC3sQB65KjMFQUBl_ioyRN0
-.. _galpy py37 win64: https://drive.google.com/open?id=1i16d6k2SxWHN8mbfyrl0aTf81UQRxAno
-
+Moreover, you can use galpy (>=1.5) to setup ``Orbit`` to easily do unit conversion or integrating orbits
 
 .. code-block:: python
 
     # To convert to 3D position and 3D velocity
     from astroNN.apogee import allstar
-    from galpy.orbit import Orbits
+    from galpy.orbit import Orbit
     import astropy.units as u
     import astropy.coordinates as coord
     from astropy.coordinates import CartesianDifferential
@@ -219,8 +213,8 @@ The ``Orbits`` galpy branch: https://github.com/jobovy/galpy/tree/orbits and I h
                        z_sun=20.8*u.pc, # https://arxiv.org/abs/1809.03507 (Bennett & Bovy 2018)
                        galcen_v_sun=CartesianDifferential([11.1, 245.7, 7.25]*u.km/u.s))
 
-    # galpy Orbits object
-    os = Orbits(c)
+    # galpy Orbit object, need galpy >= 1.5
+    os = Orbit(c)
     x, y, z = os.x(), os.y(), os.z()    # 3D position
     vx, vy, vz = os.vx(), os.vy(), os.vz()    # 3D velocity
 
