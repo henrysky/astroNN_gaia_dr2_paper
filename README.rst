@@ -39,7 +39,7 @@ Some notebooks make use of data from
 data product available at https://github.com/henrysky/astroNN_spectra_paper_figures
 
 .. _arXiv:1804.08622: https://arxiv.org/abs/1808.04428
-.. _ADS: https://ui.adsabs.harvard.edu/#abs/2019MNRAS.483.3255L/
+.. _ADS: https://ui.adsabs.harvard.edu/abs/2019MNRAS.489.2079L/abstract
 
 .. _astroNN: https://github.com/henrysky/astroNN
 .. _milkyway_plot: https://github.com/henrysky/milkyway_plot
