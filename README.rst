@@ -17,6 +17,9 @@ powerful sample to study the chemo-dynamical structure of the disk. We use this 
 abundance ratios [X/Fe] from the Galactic center to the edge of the disk. Among many interesting trends, we find that
 the bulge and bar region at R<≈5kpc clearly stands out in [Fe/H] and most abundance ratios.
 
+.. contents:: **Table of Contents**
+    :depth: 3
+
 Getting Started
 =================
 
@@ -51,16 +54,43 @@ http://astronn.readthedocs.io/en/latest/tools_apogee.html#pseudo-continuum-norma
 A legacy version of data file available as `apogee_dr14_nn_dist_0562.fits`_ in which 56.2uas offset is applied directly to train,
 and its data model will not be provided.
 
+Docker Image
+----------------
+
+If you have `Docker`_ installed, you can use the `Dockerfile`_ to build a Docker image upon Tensorflow container from `NVIDIA NGC Catalog`_ with all dependencies installed and data files downloaded.
+
+.. _NVIDIA NGC Catalog: https://catalog.ngc.nvidia.com/orgs/nvidia/containers/tensorflow
+.. _Dockerfile: Dockerfile
+.. _Docker: https://www.docker.com/
+
+To build the Docker image called ``astronn_gaia_dr2_paper``, run the following command in the root directory of this repository:
+
+.. code-block:: bash
+
+    docker build -t astronn_gaia_dr2_paper .
+
+To run the Docker container with all GPU available to the container named ``testing123``, run the following command:
+
+.. code-block:: bash
+    
+    docker run --gpus all --name testing123 -it -e SHELL=/bin/bash --entrypoint bash astronn_gaia_dr2_paper
+
+Then you can attach to the container by running:
+
+.. code-block:: bash
+
+    docker exec -it testing123 bash
+
+Now you can run all notebooks or training script inside the container
+
 Jupyter Notebook
 ------------------
-
-Incomplete list of notebook
-
 -   | `Datasets_Data_Reduction.ipynb`_
     | You should check out this notebook first as it describes how to reproduce the **exactly** same datasets used in the paper
+    | You can also download the pre-compiled dataset used in this paper on `Zenodo`_ and place the files under the root directory of this repository.
 -   | `Training.ipynb`_
     | It provides the code used to train ``astroNN_no_offset_model``, ``astroNN_constlant_model`` and ``astroNN_multivariate_model``
-    | It provides a minimal model code (in pure Tensorflow and pure PyTorch) to help you understand what is the core logic of the model
+    | It provides a minimal model code (in pure Tensorflow and pure PyTorch) to help you understand what the core logic of the model is
 -   | `Offset_Gaia.ipynb`_
     | It describes the result of Gaia offset
 -   | `Inference.ipynb`_
@@ -72,6 +102,7 @@ Incomplete list of notebook
 -   | `nn_figure1_draw_io`_
     | Source for Figure 1 in paper for the NN model, can be opened and edited by draw.io
 
+.. _Zenodo: https://zenodo.org/records/13308879
 .. _Datasets_Data_Reduction.ipynb: Datasets_Data_Reduction.ipynb
 .. _Training.ipynb: Training.ipynb
 .. _Offset_Gaia.ipynb: Offset_Gaia.ipynb
@@ -83,7 +114,7 @@ Incomplete list of notebook
 Neural Net Models and Quantity Conversion
 -----------------------------------------------
 
-It is recommend to use model ends with ``_reduced`` for example, using ``astroNN_constant_model_reduced`` instead of ``astroNN_constant_model``
+It is recommended to use model ends with ``_reduced`` for example, using ``astroNN_constant_model_reduced`` instead of ``astroNN_constant_model``
 
 - ``astroNN_no_offset_model`` is a astroNN's `ApogeeBCNN()`_ class model to infer Ks-Band `fakemag`_ without offset model.
 
@@ -261,11 +292,11 @@ To do inference on an arbitrary APOGEE spectrum to get distance,
 Authors
 =========
 -  | **Henry Leung** - henrysky_
-   | Student, Department of Astronomy and Astrophysics, University of Toronto
+   | Department of Astronomy and Astrophysics, University of Toronto
    | Contact Henry: henrysky.leung [at] utoronto.ca
 
 -  | **Jo Bovy** - jobovy_
-   | Professor, Department of Astronomy and Astrophysics, University of Toronto
+   | Department of Astronomy and Astrophysics, University of Toronto
 
 .. _henrysky: https://github.com/henrysky
 .. _jobovy: https://github.com/jobovy
